@@ -76,10 +76,10 @@ class BaseSessionHandlerInputTracks:
             try:
                 self.session = requests.Session()
                 if len(cookies['sid']) == 0:
-                    response = self.session.get('https://hitmos.me/', headers=__headers, allow_redirects=True, timeout=(5, 15))    
+                    response = self.session.get('https://ru.hitmoz.org/', headers=__headers, allow_redirects=True, timeout=(5, 30))    
                 else:
                     self.session.cookies.update(cookies)
-                    response = self.session.get('https://hitmos.me/', headers=__headers, allow_redirects=True, timeout=(5, 15))
+                    response = self.session.get('https://ru.hitmoz.org/', headers=__headers, allow_redirects=True, timeout=(5, 30))
                 
                 if response.status_code == 200:
                     response = self.session.get(response.url, headers=__headers)
