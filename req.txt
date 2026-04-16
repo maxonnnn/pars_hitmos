@@ -17,3 +17,5 @@ tenacity==9.1.2
 typing_extensions==4.14.1
 urllib3==2.5.0
 yarl==1.20.1
+flask
+gunicorn
