@@ -23,10 +23,10 @@ class BaseSessionHandlerRating:
         cookies = {'sid': self.sid.get_sid()}        
         
         self.session = requests.Session()
-        response = safe_get_main_url(self, 'https://hitmos.me', headers=__headers, cookies=cookies, timeout=5)
+        response = safe_get_main_url(self, 'https://ru.hitmoz.org', headers=__headers, cookies=cookies, timeout=(15, 30))
         
         if response.status_code == 403:
-            response = self.session.get('https://hitmos.me/', cookies={'sid':self.sid.get_sid()}, headers=__headers, allow_redirects=True)
+            response = self.session.get('https://ru.hitmoz.org/', cookies={'sid':self.sid.get_sid()}, headers=__headers, allow_redirects=True)
             self.sid.write_sid(self.session.cookies.get_dict())
 
         self.base_url = response.url
@@ -50,7 +50,7 @@ class BaseSessionHandlerRatingPage:
         cookies = {'sid': self.sid.get_sid()}        
     
         self.session = requests.Session()
-        response = safe_get_main_url(self, 'https://hitmos.me', headers=__headers, cookies=cookies, timeout=5)
+        response = safe_get_main_url(self, 'https://ru.hitmoz.org', headers=__headers, cookies=cookies, timeout=(15, 30))
 
         
         self.base_url = response.url
@@ -89,7 +89,7 @@ class BaseSessionHandlerInputTracks:
                         self.sid.write_sid(self.session.cookies.get_dict())
                         break
                 else:
-                    response = self.session.get('https://hitmos.me/', headers=__headers, allow_redirects=True, timeout=5)
+                    response = self.session.get('https://ru.hitmoz.org/', headers=__headers, allow_redirects=True, timeout=(15, 30))
                     if response.status_code == 200:
                         self.sid.write_sid(self.session.cookies.get_dict())
                         break
